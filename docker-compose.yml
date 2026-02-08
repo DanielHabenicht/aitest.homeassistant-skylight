@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # Home Assistant for testing
+  homeassistant:
+    container_name: homeassistant-test
+    image: homeassistant/home-assistant:latest
+    restart: unless-stopped
+    environment:
+      - TZ=America/New_York
+    volumes:
+      - ./test-config:/config
+    ports:
+      - "8123:8123"
+    networks:
+      - skylight-net
+
+  # Skylight Calendar Add-On (for standalone testing)
+  skylight:
+    container_name: skylight-calendar
+    build: .
+    restart: unless-stopped
+    environment:
+      - SUPERVISOR_TOKEN=${SUPERVISOR_TOKEN:-dev_token}
+      - HASS_URL=http://homeassistant:8123
+    ports:
+      - "8099:8099"
+    networks:
+      - skylight-net
+    depends_on:
+      - homeassistant
+
+networks:
+  skylight-net:
+    driver: bridge

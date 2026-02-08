@@ -1,0 +1,7 @@
+flask
+flask-cors
+python-dateutil
+icalendar
+requests
+pytest
+pytest-flask
