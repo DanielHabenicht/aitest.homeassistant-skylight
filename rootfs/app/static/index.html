@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skylight Calendar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1>Skylight Calendar</h1>
+            </div>
+            <div class="header-center">
+                <div class="view-selector">
+                    <button class="view-btn active" data-view="day">Day</button>
+                    <button class="view-btn" data-view="week">Week</button>
+                    <button class="view-btn" data-view="month">Month</button>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="btn-primary" id="addEventBtn">+ Add Event</button>
+            </div>
+        </header>
+
+        <!-- Person Filter -->
+        <div class="filters">
+            <div class="person-filter">
+                <label>Filter by Person:</label>
+                <select id="personFilter">
+                    <option value="">All People</option>
+                </select>
+            </div>
+            <div class="calendar-filter">
+                <label>Calendar:</label>
+                <select id="calendarFilter">
+                    <option value="">All Calendars</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Calendar Section -->
+            <div class="calendar-section">
+                <div class="navigation">
+                    <button id="prevBtn">← Previous</button>
+                    <h2 id="currentDate"></h2>
+                    <button id="nextBtn">Next →</button>
+                    <button id="todayBtn">Today</button>
+                </div>
+                
+                <div id="calendarView" class="calendar-grid"></div>
+            </div>
+
+            <!-- Todo List Section -->
+            <div class="todo-section">
+                <div class="todo-header">
+                    <h2>Todo Lists</h2>
+                    <button class="btn-secondary" id="addTodoBtn">+ Add Todo</button>
+                </div>
+                <div id="todoLists" class="todo-lists"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Event Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Event</h2>
+            <form id="eventForm">
+                <div class="form-group">
+                    <label for="eventTitle">Title:</label>
+                    <input type="text" id="eventTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventCalendar">Calendar:</label>
+                    <select id="eventCalendar" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="eventStart">Start:</label>
+                    <input type="datetime-local" id="eventStart" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventEnd">End:</label>
+                    <input type="datetime-local" id="eventEnd" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventDescription">Description:</label>
+                    <textarea id="eventDescription" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelEventBtn">Cancel</button>
+                    <button type="submit" class="btn-primary">Create Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Todo Modal -->
+    <div id="todoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Todo</h2>
+            <form id="todoForm">
+                <div class="form-group">
+                    <label for="todoList">List:</label>
+                    <select id="todoList" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="todoItem">Todo Item:</label>
+                    <input type="text" id="todoItem" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelTodoBtn">Cancel</button>
+                    <button type="submit" class="btn-primary">Add Todo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
