@@ -1,0 +1,21 @@
+title: Skylight Calendar Dev Dashboard
+views:
+  - title: Calendar
+    path: calendar
+    cards:
+      - type: custom:skylight-calendar-card
+        title: Calendar
+        calendars:
+          - calendar.calendar_1
+          - calendar.calendar_2
+        persons:
+          - name: Adam
+            calendars:
+              - calendar.calendar_1
+          - name: Eve
+            calendars:
+              - calendar.calendar_2
+        initial_view: timeGridWeek
+        grid_options:
+          columns: full
+        column_span: 4
